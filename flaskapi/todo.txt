@@ -1,0 +1,5 @@
+install flask-restfulapi
+
+install flask_sqlalchemy
+
+install psycopg2  # Postgres
