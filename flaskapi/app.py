@@ -1,7 +1,7 @@
 from flask import Flask, jsonify 
-from flask_sqlalchemy import SQLAlchemy
 from flask_restful import reqparse, abort, Api, Resource
-from flask import request, render_template, url_for
+
+from models import Contact, api, db
 
 
 app = Flask(__name__)
@@ -18,23 +18,6 @@ parser.add_argument('task')
 
 
 class Contact(db.Model):
-	id = db.Column(db.Integer, primary_key=True)
-	first_name = db.Column(db.String(100))
-	last_name = db.Column(db.String(100))
-	username = db.Column(db.String(120), unique=True)
-	email = db.Column(db.String(120), unique=True)
-
-
-	def __init__(self, first_name, last_name, username, email):
-		self.first_name = first_name
-		self.last_name = last_name
-		self.username = username
-		self.email = email
-		
-
-	def __repr__(self):
-		return '<Contact %r>'% self.username
-
 	# shows a single todo item and lets you delete a todo item
 	def get(self, contact_id):
 		abort_if_contact_doesnt_exist(contact_id)
@@ -68,7 +51,7 @@ class ContactList(Resource):
 ## Actually setup the Api resource routing here
 ##
 api.add_resource(ContactList, '/contacts')
-api.add_resource(Contact, '/contacts/<contact_id>')
+# api.add_resource(Contact, '/contacts/<contact_id>')
  
 
 if __name__ == '__main__':
