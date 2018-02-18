@@ -1,5 +1,16 @@
-install flask-restfulapi
+install flask-api
 
 install flask_sqlalchemy
 
 install psycopg2  # Postgres
+
+
+>>> from models import db
+>>> db.create_all()
+
+Notce:
+ db.create_all()
+/home/dilmac/DevOP/flaskapienv/lib/python3.5/site-packages/psycopg2/__init__.py:144: UserWarning: The psycopg2 wheel package will be renamed from release 2.8; in order to keep installing from binary please use "pip install psycopg2-binary" instead. For details see: <http://initd.org/psycopg/docs/install.html#binary-install-from-pypi>.
+  """)
+
+pip install psycopg2-binary
